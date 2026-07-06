@@ -3,6 +3,7 @@ from ecostock.models import Product, Warehouse
 
 
 
+
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
@@ -30,3 +31,4 @@ class WarehouseSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("The warehouse already exists ")
         return data
 
+    

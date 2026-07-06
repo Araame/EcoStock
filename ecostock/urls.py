@@ -13,7 +13,7 @@ router_warehouse.register("warehouses", WarehouseViewSet, basename="warehouse")
 
 urlpatterns = [
     path("", include(router_product.urls)),
-    path("", include(router_warehouse.urls))     
+    path("", include(router_warehouse.urls))    
     
     
 ]
