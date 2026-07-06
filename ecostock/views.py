@@ -52,12 +52,10 @@ class ProductViewSet(ModelViewSet):
             }
         }, status=status.HTTP_200_OK)
 
-
-
-    @action(detail=True, methods=['get'])
+ 
+    @action(detail=False, methods=['get'])
     def audit(self, request, pk=None):
-        
-        warehouse_id = request.query_params.get('warehouse_id')
+        warehouse_id = request.data.get('warehouse_id')
         
         if not warehouse_id:
             return Response({"error": "Warehouse id not ound in the url"}, status=status.HTTP_400_BAD_REQUEST)
@@ -70,9 +68,11 @@ class ProductViewSet(ModelViewSet):
         
 
         return Response({
-            "warehouse": {"id": warehouse.id, "name": warehouse.title},
+            "warehouse": {"id": warehouse.id},
             "total_items": Product.objects.filter(warehouse=warehouse).count(),
         }, status=status.HTTP_200_OK)
+
+  
 
    
 
@@ -84,7 +84,6 @@ class WarehouseViewSet(ModelViewSet):
 
     def get_queryset(self):
         return Warehouse.objects.all()
+   
+
     
-
-
-  
