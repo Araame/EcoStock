@@ -4,8 +4,9 @@ from ecostock.models import Product, Warehouse
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    model = Product
-    fields = ["id", "name", "quantity", "description", "warehouse", "status"]
+    class Meta:
+        model = Product
+        fields = ["id", "name", "quantity", "description", "warehouse", "status"]
 
     def validate(self, data):
         if data["name"].length > 30:
@@ -20,8 +21,9 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 class WarehouseSerializer(serializers.ModelSerializer):
-    model = Warehouse
-    fields =  ["id", "title", "location", "capacity"]
+    class Meta:
+        model = Warehouse
+        fields =  ["id", "title", "location", "capacity"]
 
     def validate(self, data):
         if Warehouse.objects.filter(title = data["title"]).exists():

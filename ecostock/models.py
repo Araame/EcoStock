@@ -10,9 +10,9 @@ class Warehouse(models.Model):
 class Product(models.Model):
 
     class Status(models.TextChoices):
-        Avalaible = 'avalaible',
-        Perime = 'perime',
-        reserved = 'reserved'
+        Avalaible = 'avalaible','Avalaible'
+        Perime = 'perime','Perime'
+        reserved = 'reserved', 'Reserved'
 
 
     id = models.AutoField(primary_key=True, verbose_name="ID")
@@ -20,7 +20,7 @@ class Product(models.Model):
     quantity = models.IntegerField(verbose_name="Quantity")
     description = models.CharField(max_length=50, verbose_name="Description")
     warehouse = models.ForeignKey(Warehouse, on_delete=models.CASCADE)
-    status = models.CharField(choices = Status, default = Status.Avalaible, verbose_name="Status")
+    status = models.CharField(choices = Status.choices, default = Status.Avalaible, verbose_name="Status")
 
     
 
