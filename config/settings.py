@@ -124,7 +124,16 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 
- 
+#  USING JWT AUTHENTICATION THAT DRF OFFERS US
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',)
+}
+
+
+
+# FOR SWAGGER LOGIN/LOGOUT FEATURE (RIGHT URLS) INDEED ERRORS
+SWAGGER_SETTINGS =  {
+    'LOGIN_URL' : '/admin/login/',
+    'LOGOUT_URL' : '/admin/logout'
+    
 }

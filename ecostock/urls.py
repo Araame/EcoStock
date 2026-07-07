@@ -7,6 +7,8 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
 
+
+# VIEW CREATION FOR SWAGGER UI
 schema_view = get_schema_view(
    openapi.Info(
       title="EcoStock",
@@ -22,11 +24,11 @@ schema_view = get_schema_view(
 
 
 router_product = routers.SimpleRouter()
-router_product.register("products", ProductViewSet, basename="product" )
+router_product.register("api/products", ProductViewSet, basename="product" )
 
 
 router_warehouse= routers.SimpleRouter()
-router_warehouse.register("warehouses", WarehouseViewSet, basename="warehouse")
+router_warehouse.register("api/warehouses", WarehouseViewSet, basename="warehouse")
 
 
 
