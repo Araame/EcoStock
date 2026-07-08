@@ -53,6 +53,18 @@ class ProductViewSet(ModelViewSet):
         }, status=status.HTTP_200_OK)
 
  
+    
+   
+
+
+class WarehouseViewSet(ModelViewSet):
+    serializer_class = WarehouseSerializer
+    permission_classes = [IsAuthenticated]
+
+
+    def get_queryset(self):
+        return Warehouse.objects.all()
+   
     @action(detail=False, methods=['get'])
     def audit(self, request, pk=None):
         warehouse_id = request.data.get('warehouse_id')
@@ -73,17 +85,5 @@ class ProductViewSet(ModelViewSet):
         }, status=status.HTTP_200_OK)
 
   
-
-   
-
-
-class WarehouseViewSet(ModelViewSet):
-    serializer_class = WarehouseSerializer
-    permission_classes = [IsAuthenticated]
-
-
-    def get_queryset(self):
-        return Warehouse.objects.all()
-   
 
     
