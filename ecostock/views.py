@@ -67,7 +67,7 @@ class WarehouseViewSet(ModelViewSet):
    
     @action(detail=False, methods=['get'])
     def audit(self, request, pk=None):
-        warehouse_id = request.data.get('warehouse_id')
+        warehouse_id = request.query_params.get('warehouse_id')
         
         if not warehouse_id:
             return Response({"error": "Warehouse id not ound in the url"}, status=status.HTTP_400_BAD_REQUEST)
