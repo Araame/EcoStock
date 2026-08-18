@@ -25,10 +25,7 @@ class ProductViewSet(ModelViewSet):
         product = self.get_object()
         
         if product.status == 'perime':
-            return Response({
-                "detail": "Expired product",
-                "current_status": product.status
-            }, status=status.HTTP_403_FORBIDDEN)
+            return Response({"detail": "Expired product","current_status": product.status}, status=status.HTTP_403_FORBIDDEN)
 
         warehouse_id = request.data.get('warehouse_id')
 
@@ -44,13 +41,7 @@ class ProductViewSet(ModelViewSet):
         product.warehouse = dest_warehouse
         product.save()
 
-        return Response({
-            "detail": "Transfer done",
-            "destination_warehouse": {
-                "product": product.id,
-                "warehouse": dest_warehouse.title
-            }
-        }, status=status.HTTP_200_OK)
+        return Response({"detail": "Transfer done","destination_warehouse": {"product": product.id, "warehouse": dest_warehouse.title}}, status=status.HTTP_200_OK)
 
  
     
